@@ -132,4 +132,10 @@ public class ChessBoard {
         }
     }
 
+    public void promotePawn(int line, int column, ChessPiece newPiece) {
+        if (board[line][column] instanceof Pawn) {
+            board[line][column] = newPiece;
+        }
+    }
 }
+

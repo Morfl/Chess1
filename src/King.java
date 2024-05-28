@@ -12,10 +12,17 @@ public class King extends ChessPiece {
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         boolean checkMassive = line >= 0 && line <= 7 && column >= 0 && column <= 7 && toLine >= 0 && toLine <= 7 && toColumn >= 0 && toColumn <= 7;
-
-        if (line != toLine || column != toColumn) {
-            if (Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1) {
-                return checkMassive;
+        if (chessBoard.board[toLine][toColumn] == null) {
+            if (line != toLine || column != toColumn) {
+                if (Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1) {
+                    return checkMassive;
+                }
+            }
+        } else if (chessBoard.board[toLine][toColumn] != null && !chessBoard.board[toLine][toColumn].color.equals(this.color)) {
+            if (line != toLine || column != toColumn) {
+                if (Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1) {
+                    return checkMassive;
+                }
             }
         }
         return false;
