@@ -18,14 +18,15 @@ public class King extends ChessPiece {
         }
 
         if (chessBoard.board[toLine][toColumn] == null || !chessBoard.board[toLine][toColumn].getColor().equals(this.color)) {
-
-            if (Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1) {
-                return checkMassive;
+            if (line != toLine || column != toColumn) {
+                if (Math.abs(toLine - line) <= 1 && Math.abs(toColumn - column) <= 1) {
+                    return checkMassive;
+                }
             }
         }
 
         return false;
-    }
+}
 
     @Override
     public String getSymbol() {
